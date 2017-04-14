@@ -1,0 +1,41 @@
+{
+  "name": "peepshow-api",
+  "version": "1.0.0",
+  "description": "API for Peep Show quotes",
+  "main": "./app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shandamundo/peepshow-api.git"
+  },
+  "keywords": [
+    "peep",
+    "show"
+  ],
+  "author": "James Shand",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shandamundo/peepshow-api/issues"
+  },
+  "homepage": "https://github.com/shandamundo/peepshow-api#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1"
+  }
+}
