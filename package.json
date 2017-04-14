@@ -5,7 +5,7 @@
   "main": "./app/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./dist/index.js"
+    "start": "node ./public/index.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/shandamundo/peepshow-api#readme",
   "dependencies": {
-    "express": "^4.15.2"
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "helmet": "^3.5.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",

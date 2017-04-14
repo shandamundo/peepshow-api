@@ -14,11 +14,11 @@ gulp.task('lint', function() {
 });
 
 gulp.task('babel', function () {
-    return gulp.src('./app/*.js')
+    return gulp.src(['./app/**/*.js'])
         .pipe(babel({
             presets:['latest']
         }))
-        .pipe(gulp.dest('./dist'));
+        .pipe(gulp.dest('./public'));
 });
 
 gulp.task('watch', function() {
