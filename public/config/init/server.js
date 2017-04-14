@@ -18,6 +18,10 @@ var _helmet = require('helmet');
 
 var _helmet2 = _interopRequireDefault(_helmet);
 
+var _router = require('./router.js');
+
+var _router2 = _interopRequireDefault(_router);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -32,8 +36,6 @@ var Server = function () {
         value: function start() {
             'use strict';
 
-            var test = 'foobar';
-
             var config = {
                 port: 3000
             };
@@ -45,20 +47,12 @@ var Server = function () {
             app.use((0, _helmet2.default)());
 
             //routing
-            app.get('/', function (req, res) {
-                res.json({
-                    'message': 'hello world'
-                });
-            });
+            var router = new _router2.default();
+            router.init(app);
 
             app.listen(3000, function () {
                 console.log('listening on port' + config.port);
             });
-        }
-    }, {
-        key: 'testingIt',
-        value: function testingIt() {
-            return 'testing';
         }
     }]);
 
