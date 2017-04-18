@@ -24,7 +24,8 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
-    "helmet": "^3.5.0"
+    "helmet": "^3.5.0",
+    "sequelize": "^3.30.4"
   },
   "devDependencies": {
     "babel": "^6.23.0",

@@ -1,6 +1,9 @@
+import QuotesService from '../services/quotesService.js';
+const quotesService = new QuotesService();
+
 class RequestHandler {
     all(){
-        return 'testing request hander';
+        return quotesService.all();
     }
 };
 

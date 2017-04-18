@@ -8,9 +8,12 @@ class Router {
             });
         });
        app.get('/all', (req, res) => {
-          res.json({
-              'message': 'thanks for getting all the quotes'
-          });
+            res.json({
+                message: requestHandler.all()
+            })
+//          res.json({
+//              'message': 'thanks for getting all the quotes'
+//          });
        });
     }
 };

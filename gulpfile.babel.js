@@ -14,7 +14,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('babel', function () {
-    return gulp.src(['./app/**/*.js'])
+    return gulp.src(['./app/**/*.js', './app/**/*.json'])
         .pipe(babel({
             presets:['latest']
         }))
