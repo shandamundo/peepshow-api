@@ -29,13 +29,8 @@ var Router = function () {
                     error: 'please call a valid endpoint'
                 });
             });
-            app.get('/all', function (req, res) {
-                res.json({
-                    message: requestHandler.all()
-                });
-                //          res.json({
-                //              'message': 'thanks for getting all the quotes'
-                //          });
+            app.get('/quotes', function (req, res) {
+                requestHandler.quotes(req, res);
             });
         }
     }]);

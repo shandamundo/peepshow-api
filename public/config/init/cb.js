@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -6,35 +6,34 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _quote = require('./../models/quote.js');
-
-var _quote2 = _interopRequireDefault(_quote);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var QuotesService = function () {
-    function QuotesService() {
-        _classCallCheck(this, QuotesService);
+var Cb = function () {
+    function Cb(res) {
+        _classCallCheck(this, Cb);
+
+        this.res = res;
     }
 
-    _createClass(QuotesService, [{
-        key: 'quotes',
-        value: function quotes(query) {
-            return new Promise(function (resolve, reject) {
-                _quote2.default.findAll().then(function (result) {
-                    resolve(result);
-                }).catch(function (error) {
-                    reject(error);
-                });
+    _createClass(Cb, [{
+        key: "success",
+        value: function success(data) {
+            this.res.json({
+                message: data
+            });
+        }
+    }, {
+        key: "reject",
+        value: function reject(error) {
+            this.res.json({
+                error: error
             });
         }
     }]);
 
-    return QuotesService;
+    return Cb;
 }();
 
 ;
 
-exports.default = QuotesService;
+exports.default = Cb;

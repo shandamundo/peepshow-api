@@ -1,20 +1,14 @@
-import Sequelize from 'sequelize';
-import dbConfig from './../../db/dbconfig.json';
-
-//const sequelize = new Sequelize(dbConfig.datbase, dbConfig.username, dbConfig.password, {
-//    host:,
-//    dialect:'mysql',
-//    pool: {
-//        max:5, 
-//        min:0,
-//        idle:1000
-//    }
-//});
+import quote from './../models/quote.js';
 
 class QuotesService {
-    all(){
-        console.log(dbConfig);
-        return 'getting all quotes from the database';
+    quotes(query){
+        return new Promise((resolve, reject)=>{
+            quote.findAll().then((result)=>{
+                resolve(result)
+            }).catch((error)=>{
+                reject(error)
+            });            
+        });
     }
 };
 

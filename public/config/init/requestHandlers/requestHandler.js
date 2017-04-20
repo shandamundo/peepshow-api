@@ -10,11 +10,17 @@ var _quotesService = require('../services/quotesService.js');
 
 var _quotesService2 = _interopRequireDefault(_quotesService);
 
+var _validate = require('./../validation/validate.js');
+
+var _validate2 = _interopRequireDefault(_validate);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var quotesService = new _quotesService2.default();
+
+var validate = new _validate2.default();
 
 var RequestHandler = function () {
     function RequestHandler() {
@@ -22,9 +28,20 @@ var RequestHandler = function () {
     }
 
     _createClass(RequestHandler, [{
-        key: 'all',
-        value: function all() {
-            return quotesService.all();
+        key: 'quotes',
+        value: function quotes(req, res) {
+            if (validate.query(req.query)) {
+                console.log('result was valid');
+                //        quotesService.quotes().then((result)=> {
+                //            res.json(result)
+                //        }).catch((error) => {
+                //            res.json(error)
+                //        });     
+            } else {
+                res.json({
+                    error: 'Please provide valid query parameters.'
+                });
+            }
         }
     }]);
 
