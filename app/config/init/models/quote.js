@@ -2,10 +2,6 @@ import Sequelize from 'sequelize';
 import sequelize from './../dbConnect.js';
 
 const quote = sequelize.define('quote', {
-    ID: {
-        type:Sequelize.INTEGER,
-        allowNull:false
-    },
     character: {
         type:Sequelize.STRING,
         allowNull:false

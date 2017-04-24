@@ -15,10 +15,6 @@ var _dbConnect2 = _interopRequireDefault(_dbConnect);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var quote = _dbConnect2.default.define('quote', {
-    ID: {
-        type: _sequelize2.default.INTEGER,
-        allowNull: false
-    },
     character: {
         type: _sequelize2.default.STRING,
         allowNull: false

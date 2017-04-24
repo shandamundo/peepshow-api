@@ -10,9 +10,9 @@ var _quotesService = require('../services/quotesService.js');
 
 var _quotesService2 = _interopRequireDefault(_quotesService);
 
-var _validate = require('./../validation/validate.js');
+var _validator = require('validator');
 
-var _validate2 = _interopRequireDefault(_validate);
+var _validator2 = _interopRequireDefault(_validator);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20,28 +20,80 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var quotesService = new _quotesService2.default();
 
-var validate = new _validate2.default();
-
 var RequestHandler = function () {
     function RequestHandler() {
         _classCallCheck(this, RequestHandler);
     }
 
     _createClass(RequestHandler, [{
+        key: 'validateParams',
+        value: function validateParams(req) {
+            return new Promise(function (resolve, reject) {
+                var errors = {
+                    list: []
+                };
+
+                if (req.params.numberOf) {
+                    if (_validator2.default.isEmpty(req.params.numberOf)) {
+                        errors.list.push('Empty number of parameter');
+                    }
+                    if (!_validator2.default.isInt(req.params.numberOf)) {
+                        errors.list.push('Number of parameter is not an Integer');
+                    }
+                    if (req.params.numberOf <= 0) {
+                        errors.list.push('Number of parameter must be above 0');
+                    }
+                }
+
+                if (req.params.character) {
+                    if (_validator2.default.isEmpty(req.params.character)) {
+                        errors.list.push('Empty character parameter');
+                    }
+                    if (_validator2.default.isInt(req.params.character)) {
+                        errors.list.push('Character field cannot be an integer');
+                    }
+                }
+
+                if (req.params.season) {
+                    if (!_validator2.default.isInt(req.params.season)) {
+                        errors.list.push('Season parameter is not an Integer');
+                    }
+                }
+
+                if (errors.list.length > 0) {
+                    reject(errors);
+                } else {
+                    resolve();
+                }
+            });
+        }
+    }, {
+        key: 'runQuery',
+        value: function runQuery(req, res) {
+            quotesService.quotes(req.params).then(function (result) {
+                res.json(result);
+            }).catch(function (error) {
+                res.json(error);
+            });
+        }
+    }, {
         key: 'quotes',
         value: function quotes(req, res) {
-            if (validate.query(req.query)) {
-                console.log('result was valid');
-                //        quotesService.quotes().then((result)=> {
-                //            res.json(result)
-                //        }).catch((error) => {
-                //            res.json(error)
-                //        });     
-            } else {
+            var _this = this;
+
+            this.validateParams(req).then(function () {
+                _this.runQuery(req, res);
+            }).catch(function (errors) {
+                console.log(errors);
                 res.json({
-                    error: 'Please provide valid query parameters.'
+                    errors: errors.list
                 });
-            }
+            });
+        }
+    }, {
+        key: 'all',
+        value: function all(req, res) {
+            this.runQuery(req, res);
         }
     }]);
 
