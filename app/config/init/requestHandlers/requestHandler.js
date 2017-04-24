@@ -55,7 +55,6 @@ class RequestHandler {
         this.validateParams(req).then(()=>{
             this.runQuery(req,res);
         }).catch((errors)=>{
-            console.log(errors);
             res.json({
                 errors: errors.list
             });     
