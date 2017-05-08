@@ -4,7 +4,7 @@ const babel = require('gulp-babel');
 const sourcemaps = require('gulp-sourcemaps');
 
 const paths = {
-    scripts:['./app/*.js']
+    scripts:['./app/**/*.js']
 };
 
 gulp.task('lint', function() {
