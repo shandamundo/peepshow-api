@@ -38,3 +38,5 @@ jspm_packages
 
 # DB Config File
 dbconfig.json
+
+/public
